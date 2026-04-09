@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 import {
   Calendar,
   Users,
@@ -15,7 +15,6 @@ import Button from "../components/Button";
 import Loader from "../components/Loader";
 import { fetchDashboardData } from "../features/organizer/dashboardSlice";
 import { toast } from "react-toastify";
-import API from "../utils/api";
 
 const OrganizerDashboard = () => {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ const OrganizerDashboard = () => {
     try {
       const token = user?.token;
 
-      await API.delete(`/api/events/delete/${id}`, {
+      await axios.delete(`/api/events/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

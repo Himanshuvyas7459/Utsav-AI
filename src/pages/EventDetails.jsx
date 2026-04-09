@@ -12,9 +12,8 @@ import {
 import Button from "../components/Button";
 import Loader from "../components/Loader";
 import { getEventById } from "../features/events/eventSlice";
-// import axios from "axios";
+import axios from "axios";
 import { toast } from "react-toastify";
-import API from "../utils/api";
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -26,7 +25,7 @@ const EventDetails = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await API.post(
+      await axios.post(
         "/api/bookings/book",
         { eventId: event._id },
         {

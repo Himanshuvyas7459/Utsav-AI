@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BarChart3 } from "lucide-react";
-import API from "../utils/api";
 
 const AdminDashboard = () => {
   const [data, setData] = useState(null);
@@ -14,7 +13,7 @@ const AdminDashboard = () => {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const res = await API.get("/api/admin/dashboard", {
+        const res = await axios.get("/api/admin/dashboard", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
