@@ -1,20 +1,11 @@
-import axios from "axios"
+import API from "../../utils/api";
 
 export const getDashboardAPI = async () => {
   try {
-    const token = localStorage.getItem("token")
-
-    const { data } = await axios.get(
-      "https://utsav-ai.onrender.com/api/organizer/dashboard",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-    return data
+    const { data } = await API.get("/organizer/dashboard");
+    return data;
   } catch (error) {
-    console.log("DASHBOARD API ERROR:", error.response?.data || error.message)
-    throw error
+    console.log("DASHBOARD API ERROR:", error.response?.data || error.message);
+    throw error;
   }
-}
+};

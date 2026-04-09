@@ -1,16 +1,14 @@
-import axios from "axios";
-
-const API_URL = "/api/bookings/";
+import API from "../../utils/api";
 
 // Get My Bookings
-const getMyBookings = async (token) => {
-  const res = await axios.get(API_URL + "my-bookings", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return res.data;
+const getMyBookings = async () => {
+  try {
+    const res = await API.get("/bookings/my-bookings");
+    return res.data;
+  } catch (error) {
+    console.log("BOOKING API ERROR:", error.response?.data || error.message);
+    throw error;
+  }
 };
 
 const bookingService = {

@@ -1,22 +1,11 @@
-import axios from "axios"
+import API from "../../utils/api";
 
 export const generatePlanAPI = async (formData) => {
   try {
-    const token = localStorage.getItem("token") // GET TOKEN
-
-    const { data } = await axios.post(
-      "https://utsav-ai.onrender.com/api/ai/generate-plan",
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`  // VERY IMPORTANT
-        }
-      }
-    )
-
-    return data
+    const { data } = await API.post("/ai/generate-plan", formData);
+    return data;
   } catch (error) {
-    console.log("API ERROR:", error)
-    throw error
+    console.log("API ERROR:", error.response?.data || error.message);
+    throw error;
   }
-}
+};
