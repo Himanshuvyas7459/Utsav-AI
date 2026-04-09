@@ -1,50 +1,41 @@
-import axios from "axios";
-
-const API_URL = "/api/events";
-
-// helper function
-const getToken = () => {
-  return localStorage.getItem("token");
-};
+import API from "../../utils/api";
 
 // CREATE EVENT
 const createEvent = async (eventData) => {
-  const token = getToken();
+  try {
+    const response = await API.post("/events/create", eventData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
-  const response = await axios.post(`${API_URL}/create`, eventData, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "multipart/form-data",
-    },
-  });
-
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.log("CREATE EVENT ERROR:", error.response?.data || error.message);
+    throw error;
+  }
 };
 
 // GET ALL EVENTS
 const getEvents = async () => {
-  const token = getToken();
-
-  const response = await axios.get(`${API_URL}/all`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return response.data.events;
+  try {
+    const response = await API.get("/events/all");
+    return response.data.events;
+  } catch (error) {
+    console.log("GET EVENTS ERROR:", error.response?.data || error.message);
+    throw error;
+  }
 };
 
 // GET SINGLE EVENT
 const getEventById = async (id) => {
-  const token = getToken();
-
-  const response = await axios.get(`${API_URL}/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return response.data;
+  try {
+    const response = await API.get(`/events/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log("GET EVENT ERROR:", error.response?.data || error.message);
+    throw error;
+  }
 };
 
 const eventService = {
