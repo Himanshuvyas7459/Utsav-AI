@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { getDashboardAPI } from "./dashboardService"
+import API from "../../utils/api"
 
 export const fetchDashboardData = createAsyncThunk(
   "dashboard/fetch",
@@ -61,7 +62,7 @@ export const deleteEvent = createAsyncThunk(
     const user = JSON.parse(localStorage.getItem("user"));
     const token = user?.token;
 
-    await axios.delete(`/api/events/delete/${id}`, {
+    await API.delete(`/api/events/delete/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -74,7 +75,7 @@ export const deleteEvent = createAsyncThunk(
 export const updateEvent = createAsyncThunk(
   "dashboard/updateEvent",
   async ({ id, data }) => {
-    const res = await axios.put(`/api/events/update/${id}`, data);
+    const res = await API.put(`/api/events/update/${id}`, data);
     return res.data;
   }
 );

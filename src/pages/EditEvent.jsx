@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Calendar, MapPin, FileText, IndianRupee } from "lucide-react";
-import axios from "axios";
+// import axios from "axios";
+import API from "../utils/api";
 
 const EditEvent = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const EditEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await axios.get(`/api/events/${id}`);
+        const res = await API.get(`/api/events/${id}`);
 
         console.log(res.data);
 

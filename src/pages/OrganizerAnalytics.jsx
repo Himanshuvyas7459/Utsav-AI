@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import API from "../utils/api";
 
 const OrganizerAnalytics = () => {
   const [data, setData] = useState(null);
@@ -23,7 +24,7 @@ const OrganizerAnalytics = () => {
           return;
         }
 
-        const res = await axios.get("/api/events/analytics", {
+        const res = await API.get("/api/events/analytics", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
