@@ -1,4 +1,4 @@
-import API from "../utils/axios"; 
+import API from "../../utils/axios";
 
 export const generatePlanAPI = async (formData) => {
   try {

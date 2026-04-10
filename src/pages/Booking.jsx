@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Minus, Plus, CreditCard } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import API from "../../utils/axios";
 import { toast } from "react-toastify";
 import { getEventById } from "../features/events/eventSlice";
 import Button from "../components/Button";
 import Loader from "../components/Loader";
+import API from "../utils/axios";
 
 const Booking = () => {
   const { id } = useParams();

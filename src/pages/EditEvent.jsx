@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Calendar, MapPin, FileText, IndianRupee } from "lucide-react";
-import API from "../../utils/axios";
+import API from "../utils/axios";
 
 const EditEvent = () => {
   const { id } = useParams();

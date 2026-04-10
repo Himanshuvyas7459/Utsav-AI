@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import API from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
 import { BarChart3 } from "lucide-react";
+import API from "../utils/axios";
 
 const AdminDashboard = () => {
   const [data, setData] = useState(null);

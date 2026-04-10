@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import API from "../../utils/axios";
+
 import {
   BarChart,
   Bar,
@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import API from "../utils/axios";
 
 const AdminAnalytics = () => {
   const [data, setData] = useState(null);
