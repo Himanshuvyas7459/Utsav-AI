@@ -13,7 +13,7 @@ const initialState = {
   message: "",
 };
 
-// 🔹 REGISTER USER
+// REGISTER USER
 export const registerUser = createAsyncThunk(
   "auth/register",
   async (formData, thunkAPI) => {
