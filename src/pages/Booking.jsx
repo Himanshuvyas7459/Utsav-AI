@@ -120,7 +120,7 @@ const Booking = () => {
                   <button
                     onClick={() => handleTicketChange(-1)}
                     disabled={tickets <= 1}
-                    className="w-10 h-10 p-2 border rounded"
+                    className="w-10 h-10 p-2 border rounded cursor-pointer"
                   >
                     <Minus />
                   </button>
@@ -130,7 +130,7 @@ const Booking = () => {
                   <button
                     onClick={() => handleTicketChange(1)}
                     disabled={tickets >= 10}
-                    className="w-10 h-10 p-2 border rounded"
+                    className="w-10 h-10 p-2 border rounded cursor-pointer"
                   >
                     <Plus />
                   </button>
@@ -169,7 +169,7 @@ const Booking = () => {
               <Button
                 onClick={handleBooking}
                 disabled={processing}
-                className="w-full flex items-center justify-center gap-2"
+                className="w-full flex items-center justify-center gap-2 cursor-pointer"
               >
                 <CreditCard />
                 {processing ? "Processing..." : "Book Now"}

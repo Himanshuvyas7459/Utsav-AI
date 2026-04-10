@@ -161,7 +161,7 @@ const EventDetails = () => {
                   Joined
                 </Button>
               ) : (
-                <Button onClick={handleJoin} className="bg-green-500">
+                <Button onClick={handleJoin} className="bg-green-500 cursor-pointer">
                   Join Event
                 </Button>
               ))}
