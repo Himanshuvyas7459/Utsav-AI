@@ -1,4 +1,4 @@
-import API from "../../utils/api";
+import API from "../../utils/axios";
 
 // Register
 const register = async (formData) => {
@@ -25,3 +25,38 @@ const login = async (formData) => {
 };
 
 export default { register, login };
+
+
+
+
+
+
+
+// import axios from "axios";
+// // import API from "../../utils/api";
+
+// // Register
+// const register = async (formData) => {
+//   try {
+//     const { data } = await axios.post("/auth/register", formData);
+//     localStorage.setItem("user", JSON.stringify(data));
+//     return data;
+//   } catch (error) {
+//     console.log("REGISTER ERROR:", error.response?.data || error.message);
+//     throw error;
+//   }
+// };
+
+// // Login
+// const login = async (formData) => {
+//   try {
+//     const { data } = await axios.post("/auth/login", formData);
+//     localStorage.setItem("user", JSON.stringify(data));
+//     return data;
+//   } catch (error) {
+//     console.log("LOGIN ERROR:", error.response?.data || error.message);
+//     throw error;
+//   }
+// };
+
+// export default { register, login };
