@@ -21,6 +21,7 @@ import OrganizerAnalytics from "./pages/OrganizerAnalytics";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import MyBookings from "./pages/MyBookings";
+import AdminOrganizerRequests from "./pages/AdminOrganizerRequests";
 
 const App = () => {
   return (
@@ -125,6 +126,7 @@ const App = () => {
           />
 
           <Route path="/events/edit/:id" element={<EditEvent />} />
+          <Route path="/admin/organizer-requests" element={<AdminOrganizerRequests />} />
 
           {/* ERROR */}
           <Route path="/unauthorized" element={<Unauthorized />} />
