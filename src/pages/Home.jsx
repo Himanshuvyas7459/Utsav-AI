@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Sparkles, Calendar, Brain, Zap, Shield, Users } from "lucide-react";
 import Button from "../components/Button";
 import { getEvents } from "../features/events/eventSlice";
-import axios from "axios";
 import { toast } from "react-toastify";
+import API from "../utils/axios";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Home = () => {
   // Become Organizer handler
   const handleRequest = async () => {
     try {
-      await axios.post("/api/organizer/request");
+      await API.post("/api/organizer/request");
       toast.success("Request sent to admin");
     } catch (error) {
       toast.error(error.response?.data?.message || "Error sending request");
