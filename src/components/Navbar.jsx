@@ -74,6 +74,14 @@ const Navbar = () => {
                   </Link>
                 )}
                 {user?.role === "admin" && (
+  <button
+    onClick={() => navigate("/admin/organizer-requests")}
+    className="text-red-500 font-semibold"
+  >
+    Organizer Requests
+  </button>
+)}
+                {user?.role === "admin" && (
                   <Link
                   to="/admin/dashboard"
                   className="text-gray-700 hover:text-red-500"
