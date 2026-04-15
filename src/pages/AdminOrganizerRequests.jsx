@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../utils/axios";
 
 const AdminOrganizerRequests = () => {
   const [requests, setRequests] = useState([]);
 
   const fetchRequests = async () => {
-    const res = await axios.get("/api/organizer/requests");
+    const res = await API.get("/organizer/requests");
     setRequests(res.data);
   };
 
   const approve = async (id) => {
-    await axios.put(`/api/organizer/approve/${id}`);
+    await API.put(`/organizer/approve/${id}`);
     fetchRequests();
   };
 
   const reject = async (id) => {
-    await axios.put(`/api/organizer/reject/${id}`);
+    await API.put(`/organizer/reject/${id}`);
     fetchRequests();
   };
 
@@ -29,8 +29,8 @@ const AdminOrganizerRequests = () => {
 
       {requests.map((req) => (
         <div key={req._id} className="border p-4 mb-3 rounded">
-          <p><b>Name:</b> {req.user.name}</p>
-          <p><b>Email:</b> {req.user.email}</p>
+         <p><b>Name:</b> {req.name}</p>
+<p><b>Email:</b> {req.email}</p>
 
           <button onClick={() => approve(req._id)}>
             Approve
