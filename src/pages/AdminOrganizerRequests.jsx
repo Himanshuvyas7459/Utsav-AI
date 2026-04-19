@@ -24,23 +24,61 @@ const AdminOrganizerRequests = () => {
   }, []);
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Organizer Requests</h2>
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white p-6">
+      
+      {/* Heading */}
+      <div className="max-w-5xl mx-auto mb-8">
+        <h2 className="text-4xl font-bold text-center text-red-500">
+          Organizer Requests
+        </h2>
+        <p className="text-center text-gray-400 mt-2">
+          Manage and approve organizer access
+        </p>
+      </div>
 
-      {requests.map((req) => (
-        <div key={req._id} className="border p-4 mb-3 rounded">
-         <p><b>Name:</b> {req.name}</p>
-<p><b>Email:</b> {req.email}</p>
+      {/* Requests List */}
+      <div className="max-w-5xl mx-auto space-y-5">
+        
+        {requests.length === 0 && (
+          <div className="text-center text-gray-400 text-lg">
+            No pending requests 🚀
+          </div>
+        )}
 
-          <button onClick={() => approve(req._id)}>
-            Approve
-          </button>
+        {requests.map((req) => (
+          <div
+            key={req._id}
+            className="bg-white/5 backdrop-blur-lg border border-gray-800 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between hover:shadow-lg transition-all duration-300"
+          >
+            {/* User Info */}
+            <div className="mb-4 md:mb-0">
+              <p className="text-lg font-semibold text-white">
+                {req.user?.name}
+              </p>
+              <p className="text-gray-400 text-sm">
+                {req.user?.email}
+              </p>
+            </div>
 
-          <button onClick={() => reject(req._id)}>
-            Reject
-          </button>
-        </div>
-      ))}
+            {/* Buttons */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => approve(req._id)}
+                className="px-5 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-medium transition duration-300"
+              >
+                Approve
+              </button>
+
+              <button
+                onClick={() => reject(req._id)}
+                className="px-5 py-2 rounded-lg border border-gray-500 hover:border-red-500 hover:text-red-500 text-gray-300 font-medium transition duration-300"
+              >
+                Reject
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
