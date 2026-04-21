@@ -126,8 +126,16 @@ const App = () => {
           />
 
           <Route path="/events/edit/:id" element={<EditEvent />} />
-          <Route path="/admin/organizer-requests" element={<AdminOrganizerRequests />} />
-
+          {/* <Route path="/admin/organizer-requests" element={<AdminOrganizerRequests />} /> */}
+          <Route
+            path="/admin/organizer-requests"
+            element={
+              <RoleRoute allowedRoles={["admin"]}>
+                <AdminOrganizerRequests />
+              </RoleRoute>
+            }
+          />
+          
           {/* ERROR */}
           <Route path="/unauthorized" element={<Unauthorized />} />
         </Routes>
